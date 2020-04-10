@@ -28,7 +28,9 @@ function GIFsearchButtonClicked(){
     url += "&limit=" + limit;
 
     //update
-    document.querySelector("#status").innerHTML = "<b>Searching For '" + displayTerm + "'</b>";
+    document.querySelector("#status").innerHTML = "<b>Searching For GIF '" + displayTerm + "'</b>";
+
+    getData(url);
 
 }
 
@@ -61,6 +63,26 @@ function STICKERsearchButtonClicked(){
         url += "&limit=" + limit;
     
         //update
-        document.querySelector("#status").innerHTML = "<b>Searching For '" + displayTerm + "'</b>";
+        document.querySelector("#status").innerHTML = "<b>Searching For STICKER: '" + displayTerm + "'</b>";
+
+        getData(url);
+}
+
+
+
+//Downloading the data with XHR
+function getData(url){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = dataLoaded;
+    xhr.onerror = dataError;
+    xhr.open("GET",url);
+    xhr.send();
+}
+//Create the callback functions
+function dataLoaded(e){
+    let xhr = e.target;
+}
+function dataError(e){
+
 }
 
